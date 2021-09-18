@@ -1,0 +1,39 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: '3.1'
+services:
+
+    mysql:
+        image: 'mysql:5.7'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+        environment:
+            - MYSQL_ROOT_PASSWORD=N3Z%Yn$D2Vvs00
+            - MYSQL_DATABASE=twitch-react
+            - MYSQL_USER=tr-app
+            - MYSQL_PASSWORD=zP3ka&Rn3dL*w*
+        ports:
+            - '3306:3306'
+
+    webserver:
+        image: 'nginx:alpine'
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+        ports:
+            - '80:80'
+
+    php-fpm:
+        build: phpdocker/php-fpm
+        working_dir: /application
+        volumes:
+            - '.:/application'
+            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini'
+            - './phpdocker/php-fpm/supervisord.conf:/etc/supervisor/supervisord.conf'
+        ports:
+            - '6001:6001'
+        
+
