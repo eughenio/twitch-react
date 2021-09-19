@@ -6,6 +6,7 @@
 - - docker-compose exec php-fpm composer install
 - - docker-compose exec php-fpm npm install
 - - docker-compose exec php-fpm php artisan migrate
+- - docker-compose exec php-fpm npm run dev
 
 ## Para acessar
 
