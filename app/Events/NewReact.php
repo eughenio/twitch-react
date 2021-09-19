@@ -15,6 +15,7 @@ class NewReact implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $id;
 
     /**
      * Create a new event instance.
@@ -24,6 +25,7 @@ class NewReact implements ShouldBroadcast
     public function __construct($message)
     {
         $this->message = $message;
+        $this->id = rand(10,999);
     }
 
     /**

@@ -49,7 +49,7 @@
 
             Echo.channel('output-react')
                 .listen('NewReact', (e)=>{
-                    console.log(e.message);
+                    console.log(e);
                     textBox(e.message);
                 });
 

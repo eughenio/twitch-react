@@ -17,5 +17,7 @@ use App\Http\Controllers\MessageController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/streamer', [MessageController::class, 'streamer']);
+Route::get('/alert', [MessageController::class, 'alert']);
 
 Route::post('/', [MessageController::class, 'send']);
